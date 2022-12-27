@@ -1,88 +1,97 @@
+//@theme "~/.config/rofi/gruv.rasi"
 configuration {
-	modi:				"drun";
-	font:				"Rubik 9";
-	display-drun: 			"";
-	sidebar-mode: 			false;
-	hover-select:			true;
-	me-select-entry:		"";
-	me-accept-entry:		[MousePrimary];
+		show-icons: true;
+		modi: "drun,calc,window";
+		show: "drun";
+        font: "CaskaydiaCove Nerd Font Mono";
+        icon-theme: "Papirus-Dark";
+        drun {
+            fallback-icon: "package-x-generic";
+        }
 }
 
-@theme "/dev/null"
+configuration {
+    font: "CaskaydiaCove Nerd Font Mono 16";
+    line-margin: 10;
 
+    display-ssh:    "";
+    display-run:    "";
+    display-drun:   "";
+    display-window: "";
+    display-combi:  "";
+    display-emoji: "ﲃ";
+    display-calc: "";
+    display-clipboard: "";
+    fixed-num-lines: false;
+    show-icons:     true;
+    transparency: "real";
+}
+
+// THEME
 * {
-	bg:				#b3b9b8;
-	fg:				#161616;
-	tnb:				#88807d;
-	window-bg:			#282828;
-
-	background-color:		@fg;
-	text-color:			@tnb;
+    vertical-align: 0.5;
+    
+    // Colors
+    bg: #282828CC;
+    fg: #EBDBB2;
+    selection: #EBDBB250;
+    transparent: #00000000;
 }
-
 window {
-	transparency:                   "real";
-	border:				12px;
-	border-color:			@window-bg;
-	width:			    	40%;
-	y-offset:                       10px;
-	padding: 			20px;
-	location: 			center;
+    border: 2px;
+    border-radius: 4;
+    border-color: @fg;
+}
+window {
+    background-color: @bg;
+}
+mainbox,inputbar,listview,message,textbox,prompt,entry{
+    background-color: @transparent;
 }
 
-prompt { enabled: false; }
-
-entry {
-	placeholder:			"Applications";
-	expand:                         true;
-	padding:			25px 0% 20px 2.5%;
-	background-color:               @bg;
-        placeholder-color:              @fg;
-	text-color:			@fg;
-	border:				10px;
-	border-color:			@fg;
-	border-radius:			2px;
-}
-
+// Inputbar
 inputbar {
-	children: 			[ prompt, entry ];
-	background-color:               @bg;
-	text-color:                     @fg;
-	expand:                         false;
-	border-radius:                  8px;
-	padding:                        8px;
+    padding: 2px;
+    children: [prompt,entry];
+}
+prompt {
+    font: "monospace 22";
+    padding: 0 16px 0 8px;
+    color: @fg;
+}
+entry {
+    color: @fg;
 }
 
+// Element
 listview {
-	columns:                        1;
-	lines:	                        8;
-	cycle:                          false;
-	dynamic:                        true;
-	layout:                         vertical;
+    border: none;
+    scrollbar: false;
+}
+element, message {
+    padding: 5px;
+}
+element selected.normal, element normal.active, element selected.active {
+    background-color: @selection;
+}
+element normal.normal, element alternate.normal, scrollbar {
+    background-color: @transparent;
+}
+element-icon, element-text {
+    background-color: @transparent;
+    color: @fg;
+}
+element-icon {
+    padding: 0 8px 0 0;
+}
+scrollbar {
+    handle-color: @fg;
 }
 
-mainbox {
-	children:                       [ inputbar, listview ];
-	spacing:                       	2%;
-	padding:                        2% 1% 2% 1%;
+// Message
+message {
+    border: none;
 }
-
-element {
-	orientation:                    vertical;
-	border-radius:                  0%;
-	padding:                        1.5% 0% 1.5% 0%;
-}
-
-element-text {
-	expand:                         true;
-	vertical-align:                 0.5;
-	margin:                         0.5% 3% 0% 3%;
-	background-color:               inherit;
-        text-color:                     inherit;
-}
-
-element selected {
-	background-color:               @tnb;
-	text-color:                     @fg;
-	border-radius:                  6px;
+textbox {
+    color: @fg;
 }
